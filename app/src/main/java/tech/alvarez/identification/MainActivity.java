@@ -95,15 +95,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Common errors
-     * <p>
-     * Error: code: 2 message: java.security.InvalidParameterException: url is null
-     * Solution: Enable Auth Service (AG Console) and update `agconnect-services.json`
-     * <p>
-     * Error: code: 203818052 message: verify code action is invalid
-     * Solution: Add .action(VerifyCodeSettings.ACTION_REGISTER_LOGIN)
-     */
     private void getCode(String country, String phone) {
         VerifyCodeSettings settings = VerifyCodeSettings.newBuilder()
                 .action(VerifyCodeSettings.ACTION_REGISTER_LOGIN)
