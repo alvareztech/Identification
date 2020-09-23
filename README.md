@@ -15,12 +15,11 @@ implementation 'com.huawei.agconnect:agconnect-auth:1.4.1.300'
 
 ##### Common errors
 
-__Error:__ `code: 2 message: java.security.InvalidParameterException: url is null`.
-__Solution:__ Enable Auth Service (AG Console) and update `agconnect-services.json`
+* __Error:__ `code: 2 message: java.security.InvalidParameterException: url is null`.
+* __Solution:__ Enable Auth Service (AG Console) and update `agconnect-services.json`
 
-__Error:__ `code: 203818052 message: verify code action is invalid`.
-
-__Solution:__ Add `.action(VerifyCodeSettings.ACTION_REGISTER_LOGIN)`
+* __Error:__ `code: 203818052 message: verify code action is invalid`.
+* __Solution:__ Add `.action(VerifyCodeSettings.ACTION_REGISTER_LOGIN)`
 
 ##### Screenshots
 
