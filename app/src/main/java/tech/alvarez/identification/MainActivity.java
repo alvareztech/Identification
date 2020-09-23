@@ -123,27 +123,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "onFailure: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        /*
-        VerifyCodeSettings settings = VerifyCodeSettings.newBuilder()
-                .action(VerifyCodeSettings.ACTION_REGISTER_LOGIN)
-                .sendInterval(30)
-                .build();
-
-        Task<VerifyCodeResult> task = PhoneAuthProvider.requestVerifyCode(country, phone, settings);
-        task.addOnSuccessListener(TaskExecutors.uiThread(), new OnSuccessListener<VerifyCodeResult>() {
-            @Override
-            public void onSuccess(VerifyCodeResult verifyCodeResult) {
-                Log.d(TAG, "onSuccess: " + verifyCodeResult);
-                Toast.makeText(MainActivity.this, "onSuccess: " + verifyCodeResult, Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(TaskExecutors.uiThread(), new OnFailureListener() {
-            @Override
-            public void onFailure(Exception e) {
-                Log.e(TAG, "onFailure", e);
-                Toast.makeText(MainActivity.this, "onFailure: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });*/
     }
 
     private void login(String country, String phone, String code) {
@@ -152,39 +131,18 @@ public class MainActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<SignInResult>() {
                     @Override
                     public void onSuccess(SignInResult signInResult) {
-                        checkUser();
+                        Log.d(TAG, "LOGIN onSuccess: " + signInResult.getUser().getPhone());
                         Toast.makeText(MainActivity.this, "LOGIN onSuccess: " + signInResult.getUser().getPhone(), Toast.LENGTH_SHORT).show();
+                        checkUser();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(Exception e) {
-                        checkUser();
                         Log.e(TAG, "LOGIN onFailure", e);
                         Toast.makeText(MainActivity.this, "onFailure: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        checkUser();
                     }
                 });
-/*
-
-        PhoneUser phoneUser = new PhoneUser.Builder()
-                .setCountryCode(country)
-                .setPhoneNumber(phone)  // The value of phoneNumber must contains the country/region code and mobile number.
-                .setVerifyCode(code)
-                .build();
-
-        AGConnectAuth.getInstance().createUser(phoneUser)
-                .addOnSuccessListener(new OnSuccessListener<SignInResult>() {
-                    @Override
-                    public void onSuccess(SignInResult signInResult) {
-                        Toast.makeText(MainActivity.this, "onSuccess: " + signInResult.getUser().getPhone(), Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(Exception e) {
-                        Log.e(TAG, "onFailure", e);
-                        Toast.makeText(MainActivity.this, "onFailure: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });*/
     }
 }
